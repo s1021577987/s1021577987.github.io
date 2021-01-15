@@ -2,17 +2,10 @@
 # -*- coding: utf-8 -*-
 import base64
 
-list_base64 = []
-
-with open("vmess", "r") as fr:
-	for line in fr:
-		if line.find("vmess://") >= 0:
-			v = base64.b64encode(line)
-			v = v + "\n"
-			list_base64.append(v)
-			pass
-
+in_f = open("vmess.html", "r")
+read_data = in_f.read()
+in_f.close()
 
 out_f = open("index.html", "w")
-out_f.writelines(list_base64)
+out_f.write(base64.b64encode(read_data))
 out_f.close()
